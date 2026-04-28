@@ -3,11 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Portfolio</title>
   </head>
   <body>
     <header>
-      <h1>Hello World</h1>
+      <div class="header-container">
+        <h1><i class="fa-solid fa-code"></i>Hello World</h1>
+        <div class="header-control">
+          <input type="text" id="searchBar" placeholder="Search..." />
+          <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <button class="filter-btn active">
+                <i class="fa-solid fa-table"></i>All
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn">
+                <i class="fa-solid fa-laptop-code"></i>Web Design
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn">
+                <i class="fa-solid fa-palette"></i>Graphic Design
+              </button>
+            </li>
+            <li>
+              <button class="filter-btn">
+                <i class="fa-solid fa-camera"></i>Photography
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main></main>
     <footer></footer>
