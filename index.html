@@ -7,35 +7,223 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
+    <!--fontawesome cdn ဆိုပီး ရှာ ပထမ ဟာကို copy လုပ်-->
     <title>My Portfolio</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+      :root {
+        /*Light Theme color*/
+        --color-bg-light: rgb(243, 243, 243);
+        --color-header-bg-light: rgb(250, 250, 250);
+        --color-text-light: black;
+        --color-header-h1-light: rgb(33, 43, 43);
+        --color-toggle-light: #000;
+        --color-bg-button-light: rgb(235, 235, 235);
+        --color-bg-button-hover-light: #1a1a1a;
+        --color-text-button-hover-light: #fff;
+
+        /*Font size*/
+        --font-size-base: 1rem;
+        --font-size-sm: 0.9rem;
+        --font-size-md: 1.2rem;
+        --font-size-lg: 2.5rem;
+        --font-size-responsive-lg: 2rem;
+        --font-size-responsive-md: 1rem;
+        --font-size-responsive-sm: 0.9rem;
+      }
+
+      body.dark-mode {
+        --color-bg-dark: rgb(21, 21, 21);
+        --color-text-dark: white;
+        --color-header-bg-dark: rgb(35, 35, 35);
+        --color-header-h1-dark: rgb(250, 250, 250);
+        --color-toggle-dark: #fff;
+        --color-bg-button-dark: rgb(50, 50, 50);
+        --color-bg-button-hover-dark: #fff;
+        --color-text-button-hover-dark: #000;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--color-bg-light);
+        font-family: "Outfit", sans-serif;
+        color: var(--color-text-light);
+      }
+
+      body.dark-mode {
+        background-color: var(--color-bg-dark);
+        color: var(--color-text-dark);
+      }
+
+      header {
+        background-color: var(--color-header-bg-light);
+        font-size: 14px;
+      }
+
+      body.dark-mode header {
+        background-color: var(--color-header-bg-dark);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem; /*rem သည် root နဲ့ဆိုင် , em သည် သူ့ မိဘနဲ့ဘဲဆိုင်*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header h1 {
+        font-size: var(--font-size-lg);
+        color: var(--color-header-h1-light);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-bottom: 1rem;
+      }
+
+      body.dark-mode header h1 {
+        color: var(--color-header-h1-dark);
+      }
+
+      .header-search {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      #search {
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        width: 240px;
+      }
+
+      #search:focus {
+        outline: none;
+        border-color: rgb(35, 35, 35);
+      }
+
+      body.dark-mode #search::placeholder {
+        color: rgba(23, 23, 23, 0.6);
+      }
+
+      #toggle {
+        border: none;
+        font-size: 1.4rem;
+        background: none;
+        color: var(--color-toggle-light);
+        cursor: pointer;
+      }
+
+      body.dark-mode #toggle {
+        color: var(--color-toggle-dark);
+      }
+
+      #toggle:hover,
+      body.dark-mode #toggle:hover {
+        transform: scale(0.8);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      nav ul button {
+        padding: 0.5rem 1rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: var(--font-size-md);
+        background: var(--color-bg-button-light);
+        transition:
+          background-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      body.dark-mode nav ul button {
+        background: var(--color-bg-button-dark);
+        color: white;
+      }
+      nav ul button:hover {
+        background-color: var(--color-bg-button-hover-light);
+        color: var(--color-text-button-hover-light);
+        transform: translateY(-2px);
+      }
+
+      body.dark-mode nav ul button:hover {
+        background-color: var(--color-bg-button-hover-dark);
+        color: var(--color-text-button-hover-dark);
+      }
+
+      nav ul .active {
+        background: #000;
+        color: white;
+      }
+
+      body.dark-mode nav ul .active {
+        background-color: #fff;
+        color: #000;
+      }
+
+      @media (max-width: 479px) {
+        header h1 {
+          font-size: var(--font-size-responsive-lg);
+        }
+        #search {
+          width: 200px;
+        }
+        nav ul {
+          flex-wrap: wrap;
+        }
+        nav ul button {
+          font-size: var(--font-size-responsive-md);
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body class="dark-mode">
     <header>
       <div class="header-container">
-        <h1><i class="fa-solid fa-code"></i>Hello World</h1>
-        <div class="header-control">
-          <input type="text" id="searchBar" placeholder="Search..." />
-          <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+        <h1><i class="fa-solid fa-code"></i>My Portfolio</h1>
+        <div class="header-search">
+          <input type="text" id="search" placeholder="Search projects..." />
+          <button id="toggle" aria-label="Dark/light mode button">
+            <i class="fa-solid fa-moon"></i>
+          </button>
         </div>
         <nav>
           <ul>
             <li>
-              <button class="filter-btn active">
+              <button class="nav-btn active" data-filter="all">
                 <i class="fa-solid fa-table"></i>All
               </button>
             </li>
             <li>
-              <button class="filter-btn">
+              <button class="nav-btn" data-filter="web">
                 <i class="fa-solid fa-laptop-code"></i>Web Design
               </button>
             </li>
             <li>
-              <button class="filter-btn">
+              <button class="nav-btn" data-filter="graphic">
                 <i class="fa-solid fa-palette"></i>Graphic Design
               </button>
             </li>
             <li>
-              <button class="filter-btn">
+              <button class="nav-btn" data-filter="photography">
                 <i class="fa-solid fa-camera"></i>Photography
               </button>
             </li>
